@@ -1,0 +1,46 @@
+main {
+    background-image: url(../../images/settings_background.jpg);
+    background-size: cover;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content:right;
+    align-items: flex-end;
+    height: 75vh;
+}
+@media (max-width: 690px) {
+    .settings {
+        width: 80%;
+    }
+}
+.settings {
+    width: 30%;
+    height: auto;
+    display: flex;
+    background-color: rgb(92, 105, 35);
+    padding: 1rem;
+    flex-direction: column ;
+    justify-content: left;
+    border-radius: 20px;
+    border-color: black;
+    border-width: 50px;
+    border: solid;
+    margin-top: 3rem;
+}
+header, footer {
+    background-color: rgb(39, 44, 15);
+}
+h3 {
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+@media (max-width: 600px) {
+    .settings {
+        width: 60%;
+    }
+}
