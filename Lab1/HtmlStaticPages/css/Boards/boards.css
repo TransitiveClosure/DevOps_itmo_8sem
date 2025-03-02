@@ -1,0 +1,33 @@
+main {
+    background-image: url(../../images/grass_wall.jpg);
+    background-size: cover;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content:left;
+    height: 75vh;
+}
+
+.board {
+    width: auto;
+    height: auto;
+    display: flex;
+    background-color: rgb(92, 35, 105);
+    padding: 1rem;
+    flex-direction: column ;
+    justify-content: left;
+    border-radius: 20px;
+    border-color: black;
+    border-width: 50px;
+    border: solid;
+}
+
+.board:hover {
+    /* font-size: 1.6rem; */
+    color:rgb(22, 179, 108)
+}
+
+h3 {
+    margin: 0;
+}

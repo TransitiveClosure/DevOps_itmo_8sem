@@ -1,0 +1,55 @@
+main {
+    background-image: url(../../images/black_wall.jpg);
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    height: 75vh;
+}
+
+.log_in {
+    margin: 8% 0;
+    width: 20rem;
+    height: 10rem;
+    display: flex;
+    background-color: rgb(92, 35, 105);
+    padding: 10px;
+    flex-direction: column ;
+    justify-content:center;
+    align-items: center;
+    border-radius: 20px;
+    border-color: black;
+    border-width: 50px;
+    border: solid;
+}
+
+input {
+    background: none;
+    border: none;
+    font-family: 'SedgwickAveDisplay-Regular', 'Bauhaus 93', 'Papyrus';
+    font-size: 1.7rem;
+    width: 90%;
+    padding: 5px 0;
+}
+
+.log_in__confirm_button {
+    width: auto;
+    margin-top: 5px;
+    font-size: 1.7rem;
+}
+.log_in__confirm_button:hover {
+    /* font-size: 1.6rem; */
+    color:rgb(22, 179, 108)
+}
+
+@media (min-width: 300px) {
+    .log_in {
+        margin: 10% 0;
+    }
+}
+@media (min-width: 690px) {
+    .log_in {
+        margin: 10%  0;
+    }
+}

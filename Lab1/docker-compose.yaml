@@ -1,0 +1,12 @@
+services:
+  nginx:
+    container_name: nginx
+    image: mynginx
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./HtmlStaticPages:/var/www/static_html
+      - ./NginxConfig/nginx.conf:/etc/nginx/nginx.conf

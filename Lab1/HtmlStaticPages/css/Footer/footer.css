@@ -1,0 +1,27 @@
+footer {
+    background-color: rgb(60, 7, 79);
+    margin: 0px;
+    padding: 0;
+    width:100%; 
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+.contacts {
+    padding: 10px;
+}
+.contacts h6 {
+    margin: 0;
+    padding: 0;
+}
+
+.contacts p:nth-child(even) {
+    color: rgb(28, 200, 9);
+}
+.contacts p:nth-child(odd) {
+    color: rgb(22, 221, 211);
+}

@@ -1,0 +1,34 @@
+html {
+    font-size: 10px;
+}
+@media (min-width: 300px) {
+    html {
+        font-size: 25px;
+  }
+  .choose_day__icon {
+    width: 3px;
+}
+}
+@media (min-width: 690px) {
+    html {
+        font-size: 40px;
+  }
+    .choose_day__icon {
+        width: 3px;
+    }
+}
+@media (min-width: 1200px) {
+    html {
+        font-size: 30px;
+  }
+}
+@media (min-width: 2000px) {
+    html {
+        font-size: 45px;
+  }
+}
+@media (min-width: 3000px) {
+    html {
+        font-size: 90px;
+  }
+}

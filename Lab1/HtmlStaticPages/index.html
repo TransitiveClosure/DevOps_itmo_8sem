@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+	<head>
+		<script type="text/javascript" src="js/load_time.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+		<link href="css/index_style.css" rel="stylesheet">
+		<link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+		<title>My tasks</title>
+		<meta charset="utf-8">
+		<meta name="keywords" content="Доска, задачи, список, планирование">
+		<meta name="description" content="Список задач долгосрочного планирования и список задач на день">
+		<script type="text/javascript" src="js/menu_buttons.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+	</head>
+	<body>
+		<header>
+			<div class="header_container">
+				<img class="site_logo" src="images/logo.png" width="100" height="100"/>
+				<h1 class="site_name">Board 1</h1>
+			</div>	
+			<nav class="menu_bar">
+				<button class="menu_bar__button log_out_button" data-intro="You can use this button to change user!" onclick="log_out()">Log out</button>
+				<button class="menu_bar__button boards_button" data-intro="This button show you all your boards!" onclick="change_board()">Change board</button>
+				<button class="menu_bar__button settings_button" data-intro="Choose personal settings with this button" onclick="settings()">Settings</button>
+			</nav>
+		</header> 
+		<main>
+			<div class="planning_container">
+				<section class="planning">
+					<form method="post" id="add_global_task" name="add_global_task">
+						<input class="planning__button_add"  id="add_global" name="add_global" placeholder="Create goal"></input> 
+					</form>
+					<div class="planning__task_body">
+						<h2 class="planning__header">Global goals</h2>
+						<ul class="planning__list_tasks global_tasks">
+						</ul>
+					</div>
+				</section>
+				<section class="choose_day">
+					<button class="choose_day__button" id="datepicker"><img class = "choose_day__icon" src="images/calendar.png"></button>
+					<div class="choose_day__bar">
+						<p>Choose day</p>
+					</div>
+				</section>
+				
+				<section class="planning"  data-intro="Here you can see your daily plan">
+					<form  method="post" id="add_daily_task" name="add_daily_task">
+						<input class="planning__button_add"  placeholder="Create task"></input> 
+					</form>
+					<div class="planning__task_body">
+						<h2 class="planning__header">Daily tasks</h2>
+						<ul class="planning__list_tasks daily_tasks">
+							<li class="planning__task">
+								<span>Subtask</span>
+								<input type="checkbox" class="planning__task__checkbox"/>
+								<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+								<ul class="planning__list_tasks"> 
+									<li class="planning__task">
+										<span>Subtask</span>
+										<input type="checkbox" class="planning__task__checkbox"/>
+										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+									</li>
+									<li class="planning__task">
+										<span>Subtask</span>
+										<input type="checkbox" class="planning__task__checkbox"/>
+										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+									</li>
+								</ul>	
+							</li>
+							<li class="planning__task">
+								<span>Subtask</span>
+								<input type="checkbox" class="planning__task__checkbox"/>
+								<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+								<ul class="planning__list_tasks">
+									<li class="planning__task">
+										<span>Subtask</span>
+										<input type="checkbox" class="planning__task__checkbox"/>
+										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+									</li>
+									<ul class="planning__list_tasks">
+										<li class="planning__task">
+											<span>Subtask</span>
+											<input type="checkbox" class="planning__task__checkbox"/>
+											<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+										</li>
+										<li class="planning__task">
+											<span>Subtask</span>
+											<input type="checkbox" class="planning__task__checkbox"/>
+											<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+										</li>
+									</ul>
+									<li class="planning__task">
+										<span>Subtask</span>
+										<input type="checkbox" class="planning__task__checkbox"/>
+										<button class="planning__task__trashbox_button"><img class = "planning__task__trashbox" src="images/trashbox.png"></button>
+									</li>
+								</ul>	
+							</li>
+						</ul>
+					</div>
+				</section>
+			</div>
+		</main>
+		<footer>
+			<div class="contacts"  data-intro="Use this contacts to stay in touch with us">
+				<h6>Our contacts:</h6>
+				<p>+7-888-888-88-88</p>
+				<p>mail@mail.ru</p>
+				<a href ="">Donate</a>
+			</div>	
+			<div class="load_time" data-intro="Information about load">
+				<p>The page loaded in <span id="load_time__number"></span> seconds</p>
+				<p id="benchmark_message"></p>
+			</div>
+		</footer>
+		
+	</body>
+	<script type="text/javascript" src="js/data_picker.js"></script>
+	<script type="text/javascript" src="js/task_boards.js"></script>
+	<script type="text/javascript" src="js/update_tasks.js"></script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+        <script type="text/javascript" src="../js/load_time.js"></script>
+		<link href="../css/boards_style.css" rel="stylesheet">
+		<link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+		<title>Your boards</title>
+		<meta charset="utf-8">
+		<meta name="description" content="Список всех досок">
+        <script type="text/javascript" src="../js/menu_buttons.js"></script>
+        <script type="text/javascript" src="../js/boards.js"></script>
+	</head>
+	<body>
+		<header>
+			<div class="header_container">
+				<img class="site_logo" src="../images/logo.png" width="100" height="100"/>
+				<h1 class="site_name">Long term planner</h1>
+			</div>
+            <nav class="menu_bar">
+				<button class="menu_bar__button log_out_button" onclick="log_out()">Log out</button>
+				<button class="menu_bar__button boards_button" onclick="change_board()">Change board</button>
+				<button class="menu_bar__button settings_button" onclick="settings()">Settings</button>
+			</nav>
+		</header> 
+		<main>
+            <div class="board" onclick="choose_board()">
+                <h3>Board 1</h3>
+                <p> This boards with my goals</p>
+            </div> 
+        </main>
+        <footer>
+            <div class="contacts">
+				<h6>Our contacts:</h6>
+				<p>+7-888-888-88-88</p>
+				<p>mail@mail.ru</p>
+				<a href ="">Donate</a>
+			</div>
+            <div class="load_time">
+				<p>The page loaded in <span id="load_time__number"></span> seconds</p>
+                <p id="benchmark_message"></p>
+			</div>	
+        </footer>
+    </body>
+</html>
