@@ -1,5 +1,5 @@
 FROM python:3.11-slim
-RUN useradd -m -r djangouser && \
+RUN useradd -r djangouser && \
     mkdir /app && \
     chown -R djangouser /app
 
