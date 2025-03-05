@@ -1,5 +1,7 @@
 FROM python:3.11-slim
-RUN mkdir /app
+RUN useradd -m -r djangouser && \
+    mkdir /app && \
+    chown -R djangouser /app
 
 WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -16,4 +18,5 @@ EXPOSE 8000
 
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
+USER djangouser
 ENTRYPOINT ["/entrypoint.sh"]
