@@ -8,7 +8,8 @@ ENV PYTHONUNBUFFERED=1
 RUN pip install --upgrade pip 
 COPY requirements.txt  /app/
 RUN apt-get update && \
-    apt-get install -y libpq-dev gcc 
+    apt-get install -y --no-install-recommends libpq-dev gcc && \
+    rm -rf /var/lib/apt/lists/* 
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 EXPOSE 8000
