@@ -3,7 +3,7 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1 
 
-COPY requirements.txt  /app/
+COPY /src/requirements.txt  /app/
 RUN pip install --upgrade pip  && \
     apt-get update && \
     apt-get install -y --no-install-recommends libpq-dev gcc && \
