@@ -1,0 +1,60 @@
+services:
+ db:
+   image: postgres:17
+   environment:
+     POSTGRES_DB: ${DATABASE_NAME}
+     POSTGRES_USER: ${DATABASE_USERNAME}
+     POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+   ports:
+     - ${DATABASE_PORT}:${DATABASE_PORT}
+   volumes:
+     - postgres_data:/var/lib/postgresql/data
+   healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $DATABASE_USERNAME -p $DATABASE_PORT -d $DATABASE_NAME"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+   env_file:
+     - .env
+ 
+ system:
+    build:
+      context: .
+      dockerfile: ./docker/system.Dockerfile
+    image: django_system
+
+ build:
+    build:
+      context: .
+      dockerfile: ./docker/build.Dockerfile
+    depends_on:
+      - system
+    image: django_build
+
+ django-web:
+   build: 
+    context: .
+    dockerfile: ./docker/production.Dockerfile
+   container_name: django-docker
+   ports:
+     - "8080:8080"
+   depends_on:
+     build:
+      condition: service_started
+     db:
+      condition: service_healthy
+   environment:
+     DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+     DEBUG: ${DEBUG}
+     DJANGO_LOGLEVEL: ${DJANGO_LOGLEVEL}
+     DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
+     DATABASE_ENGINE: ${DATABASE_ENGINE}
+     DATABASE_NAME: ${DATABASE_NAME}
+     DATABASE_USERNAME: ${DATABASE_USERNAME}
+     DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+     DATABASE_HOST: ${DATABASE_HOST}
+     DATABASE_PORT: ${DATABASE_PORT}
+   env_file:
+     - .env
+volumes:
+   postgres_data:
