@@ -1,6 +1,7 @@
 {
   "name": "hobbie",
   "version": "0.1.0",
+  "proxy": "http://localhost:8081",
   "private": true,
   "dependencies": {
     "@ionic/react": "^6.0.2",

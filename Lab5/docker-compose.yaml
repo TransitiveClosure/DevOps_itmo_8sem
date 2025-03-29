@@ -1,0 +1,65 @@
+services:
+  frontend:
+    build: ./react-frontend
+    restart: always
+    networks:
+      - app-network
+    depends_on:
+      - backend
+    environment:
+      REACT_APP_API_BASE_URL: ${REACT_APP_API_BASE_URL}
+    env_file:
+     - react-frontend/.env
+
+  backend:
+    build: ./spring-backend
+    restart: always
+    networks:
+      - app-network
+    depends_on:
+      - db
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      DB_HOST: ${DB_HOST}
+    env_file:
+     - .env
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PORT: ${MYSQL_PORT}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    networks:
+      - app-network
+    volumes:
+      - db_data:/var/lib/mysql
+    env_file:
+     - .env
+
+  nginx-proxy:
+    build: ./proxy
+    restart: always
+    ports:
+      - "8081:8081"
+    networks:
+      - app-network
+    depends_on:
+      - frontend
+      - backend
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:
