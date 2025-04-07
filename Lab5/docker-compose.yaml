@@ -1,6 +1,8 @@
 services:
   frontend:
-    build: ./react-frontend
+    build:
+      context: ./react-frontend
+      dockerfile: Dockerfile
     restart: always
     networks:
       - app-network
@@ -12,12 +14,15 @@ services:
      - react-frontend/.env
 
   backend:
-    build: ./spring-backend
+    build:
+      context: ./spring-backend
+      dockerfile: Dockerfile
     restart: always
     networks:
       - app-network
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
@@ -43,9 +48,16 @@ services:
       - db_data:/var/lib/mysql
     env_file:
      - .env
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-u", "root", "-p$MYSQL_ROOT_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   nginx-proxy:
-    build: ./proxy
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "8081:8081"
